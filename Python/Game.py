@@ -60,7 +60,7 @@ class MazeCell(Cell):
 
 class Entity:
     def __init__(self):
-        self.health = 5
+        self.health = 20
         self.damage = 1
 
     def deal_damage(self, amt):
@@ -71,14 +71,14 @@ class WeakMonster(Entity):
     def __init__(self):
         Entity.__init__(self)
         self.damage = 2
-        self.health = 10
+        self.health = 1
 
 
 class HardMonster(Entity):
     def __init__(self):
         Entity.__init__(self)
         self.damage = 5
-        self.health = 20
+        self.health = 1
 
 
 class Player(Entity):
@@ -266,21 +266,21 @@ class Maze:
         controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         print("in fucking 180")
-        time.sleep(2)
+        time.sleep(5)
         pass
 
     def turnRight90(self):
         controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         print("in fucking right")
-        time.sleep(1)
+        time.sleep(5)
         pass
 
     def turnLeft90(self):
         controller.setAccel(2, 6)
         controller.setTarget(2, 7000)
         print("in fucking left")
-        time.sleep(1)
+        time.sleep(5)
 
         pass
 
@@ -309,14 +309,12 @@ class Maze:
         }
         global currentDirection
         rotation_amt = dir_vals[direction] - dir_vals[currentDirection]
-
+        print(rotation_amt)
         currentDirection = direction
         if(rotation_amt == 90):
             self.turnRight90()
-            print("fucking function right")
         elif(rotation_amt == -90):
             self.turnLeft90()
-            print("fucking function left")
         elif(rotation_amt == 180):
             self.turn180()
 
