@@ -274,6 +274,8 @@ class Maze:
         controller.setTarget(2, 5000)
         print("in fucking right")
         time.sleep(5)
+        controller.setTarget(2,6000)
+        time.sleep(1)
         pass
 
     def turnLeft90(self):
@@ -281,6 +283,8 @@ class Maze:
         controller.setTarget(2, 7000)
         print("in fucking left")
         time.sleep(5)
+        controller.setTarget(2,6000)
+        time.sleep(1)
 
         pass
 
