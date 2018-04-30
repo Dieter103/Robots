@@ -267,7 +267,7 @@ class Maze:
         controller.setTarget(1, 4000)
         print("in fucking 180")
         time.sleep(5)
-        controller.setTarget(1,6000)
+        controller.setTarget(2,6000)
         time.sleep(3)
         pass
 
@@ -321,7 +321,7 @@ class Maze:
             self.turnRight90()
         elif(rotation_amt == -90):
             self.turnLeft90()
-        elif(rotation_amt == 180):
+        elif(rotation_amt == 180 or rotation_amt == -180):
             self.turn180()
 
         else:

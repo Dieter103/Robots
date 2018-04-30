@@ -28,8 +28,8 @@
       <file leaf-file-name="Game.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Python/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="286" column="20" lean-forward="false" selection-start-line="286" selection-start-column="20" selection-end-line="286" selection-end-column="20" />
+            <state relative-caret-position="158">
+              <caret line="269" column="30" lean-forward="false" selection-start-line="269" selection-start-column="30" selection-end-line="269" selection-end-column="30" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -62,7 +62,12 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
               <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-              <folding />
+              <folding>
+                <marker date="1525117027674" expanded="true" signature="941:1433" ph="..." />
+                <marker date="1525117027674" expanded="true" signature="965:1280" ph="..." />
+                <marker date="1525117027674" expanded="true" signature="1300:1433" ph="..." />
+                <marker date="1525117027674" expanded="true" signature="1317:1433" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -215,7 +220,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-          <folding />
+          <folding>
+            <marker date="1525117027674" expanded="true" signature="941:1433" ph="..." />
+            <marker date="1525117027674" expanded="true" signature="965:1280" ph="..." />
+            <marker date="1525117027674" expanded="true" signature="1300:1433" ph="..." />
+            <marker date="1525117027674" expanded="true" signature="1317:1433" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -247,8 +257,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Python/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="286" column="20" lean-forward="false" selection-start-line="286" selection-start-column="20" selection-end-line="286" selection-end-column="20" />
+        <state relative-caret-position="158">
+          <caret line="269" column="30" lean-forward="false" selection-start-line="269" selection-start-column="30" selection-end-line="269" selection-end-column="30" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
