@@ -45,8 +45,8 @@ class Server(Thread):
         self.ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # self.host = '192.168.0.3'
-        self.host = '10.200.30.71'
-        self.port = 6969
+        self.host = '10.200.33.219'
+        self.port = 6980
 
         self.ss.bind((self.host, self.port))
         self.ss.listen(5)

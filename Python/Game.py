@@ -263,15 +263,17 @@ class Maze:
 
 
     def turn180(self):
-        controller.setAccel(2, 6)
-        controller.setTarget(2, 5000)
+        controller.setAccel(1, 1)
+        controller.setTarget(1, 4000)
         print("in fucking 180")
         time.sleep(5)
+        controller.setTarget(1,6000)
+        time.sleep(3)
         pass
 
     def turnRight90(self):
-        controller.setAccel(2, 6)
-        controller.setTarget(2, 5000)
+        controller.setAccel(1, 6)
+        controller.setTarget(1, 4000)
         print("in fucking right")
         time.sleep(5)
         controller.setTarget(2,6000)
@@ -280,7 +282,7 @@ class Maze:
 
     def turnLeft90(self):
         controller.setAccel(2, 6)
-        controller.setTarget(2, 7000)
+        controller.setTarget(2, 8000)
         print("in fucking left")
         time.sleep(5)
         controller.setTarget(2,6000)
