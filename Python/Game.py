@@ -308,12 +308,11 @@ class Maze:
 
         currentDirection = direction
         if(rotation_amt == 90):
-
-            pass
+            self.turnRight90()
         elif(rotation_amt == -90):
-            pass
+            self.turnLeft90()
         elif(rotation_amt == 180):
-            pass
+            self.turn180()
         else:
             pass
 
