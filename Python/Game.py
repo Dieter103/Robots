@@ -262,19 +262,19 @@ class Maze:
 
 
     def turn180(self):
-        controller.setAccel(2, 6)
+        # controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         time.sleep(2)
         pass
 
     def turnRight90(self):
-        controller.setAccel(2, 6)
+        # controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         time.sleep(1)
         pass
 
     def turnLeft90(self):
-        controller.setAccel(2, 6)
+        # controller.setAccel(2, 6)
         controller.setTarget(2, 7000)
         time.sleep(1)
 
