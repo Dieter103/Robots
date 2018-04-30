@@ -58,7 +58,7 @@ def center(toplevel):
 
 actions = [None] * 8
 
-actionOptions = [MotorAction(), BodyTurnAction(), HeadTurnAction(), HeadTiltAction(), PauseAction(), WaitForSpeechAction(), SpeakAction(), GameAction()]
+actionOptions = [GameAction(), BodyTurnAction(), HeadTurnAction(), HeadTiltAction(), PauseAction(), WaitForSpeechAction(), SpeakAction(), MotorAction()]
 
 windowWidth = 1280
 windowHeight = 720
