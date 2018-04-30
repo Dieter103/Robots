@@ -476,7 +476,7 @@ def go(controller, server):
                     'North': Direction.NORTH,
                     'East': Direction.EAST,
                     'West': Direction.WEST
-                }[inp], curentDirection
+                }[inp]
             ) is False
         ):
             maze.speak("Nice, try, that wasn't an option you bozo, try again")
