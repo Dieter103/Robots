@@ -80,7 +80,7 @@ class HardMonster(Entity):
         Entity.__init__(self)
         self.damage = 5
         self.health = 1
-        self.has_key = False
+        self.has_key = True
 
 class Player(Entity):
     def __init__(self):
@@ -166,8 +166,8 @@ class Maze:
         ]
 
         recharge_station_left = 1
-        weak_enemies_left = 4
-        hard_enemies_left = 2
+        weak_enemies_left = 1
+        hard_enemies_left = 1
 
         start_position = {
             0: (0, 0),
@@ -232,12 +232,13 @@ class Maze:
             if cell.type == MazeType.RECHARGE_STATION:
                 recharge_station_left -= 1
             elif cell.type == MazeType.WEAK_MONSTER:
-                hard_enemies_left -= 3
+                hard_enemies_left -= 1
                 if hard_enemies_left == 0:
                     cell.monster.has_key = True
             elif cell.type == MazeType.HARD_MONSTER:
                 hard_enemies_left -= 1
-
+                if hard_enemies_left == 0:
+                    cell.monster.has_key = True
             x, y = position
             self.maze[x][y] = cell
 
@@ -495,7 +496,7 @@ def go(controller, server):
     maze.speak(
         "You've stepped into some kind of weird maze. Aw jeez, I don't want to deal with this. There are several paths.")
 
-    for i in range(10):
+    for i in range(20):
         print(maze)
         print(', '.join(maze.paths_available()))
         print(maze.position)
