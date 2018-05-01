@@ -297,7 +297,13 @@ class Maze:
         controller.setTarget(1,6000)
 
     def armMovement(self):
-        controller.setTarget(6,2000)
+        controller.setTarget(6,9000)
+        time.sleep(1)
+        controller.setTarget(8, 9000)
+        time.sleep(0.75)
+        controller.setTarget(8, 6000)
+        time.sleep(duration)
+        controller.setTarget(6,6000)
 
     def move(self, direction):
         m = {
