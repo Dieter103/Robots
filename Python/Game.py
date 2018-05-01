@@ -483,28 +483,10 @@ class Maze:
             MazeType.NONE: lambda: print,
         }[self.maze[x][y].type]()
 
-        def run_animation():
-            duration = 0
-
-            sm = GifFrame()
-            start_new_thread(draw_animation, (sm, 100))
-            time.sleep(duration)
-            sm.destroy()
-
-        def draw_animation(sm, delay):
-            sm.update()
-            sm.win().after(delay, draw_animation, sm, delay)
 
 
-class GifFrame(object):
-    def __init__(self):
-        self.frameCount = 0
-        self._window = Toplevel()
-        self._window.attributes("-fullscreen", True)
-        self.imageGIF2 = PhotoImage(file="gif.gif", format="gif -index " + str(self.frameCount))
-        self.imageLabel2 = Label(self._window, image=self.imageGIF2)
-        self.imageLabel2.pack()
-        self.imageLabel2.place(x=master.winfo_screenwidth() / 2, y=master.winfo_screenheight() / 2, anchor=CENTER)
+
+
 
 def go(controller, server):
 
