@@ -334,7 +334,7 @@ class Maze:
         rotation_amt = dir_vals[direction] - dir_vals[currentDirection]
         print(rotation_amt)
         currentDirection = direction
-        if(rotation_amt == 90):
+        if(rotation_amt == 90 or rotation_amt == -270):
             self.turnRight90()
             self.forward()
 
