@@ -263,34 +263,38 @@ class Maze:
 
 
     def turn180(self):
-        controller.setAccel(1, 1)
-        controller.setTarget(1, 4000)
-        print("in fucking 180")
-        time.sleep(5)
+        controller.setAccel(2, 6)
+        controller.setTarget(2, 5000)
+        print("in 180")
+        time.sleep(4)
         controller.setTarget(2,6000)
-        time.sleep(3)
+        time.sleep(1)
         pass
 
     def turnRight90(self):
-        controller.setAccel(1, 6)
-        controller.setTarget(1, 4000)
-        print("in fucking right")
-        time.sleep(5)
-        controller.setTarget(2,6000)
+        controller.setAccel(2, 6)
+        controller.setTarget(2, 5000)
+        print("in right 90")
+        time.sleep(2)
+        controller.setTarget(2, 6000)
         time.sleep(1)
         pass
 
     def turnLeft90(self):
         controller.setAccel(2, 6)
-        controller.setTarget(2, 8000)
-        print("in fucking left")
-        time.sleep(5)
-        controller.setTarget(2,6000)
+        controller.setTarget(2, 7000)
+        print("in left 90")
+        time.sleep(4)
+        controller.setTarget(2, 6000)
         time.sleep(1)
 
         pass
 
-
+    def forward(self):
+        controller.setAccel(1,1)
+        controller.setTarget(1,5000)
+        time.sleep(1)
+        controller.setTarget(1,6000)
 
     def move(self, direction):
         m = {
@@ -319,12 +323,15 @@ class Maze:
         currentDirection = direction
         if(rotation_amt == 90):
             self.turnRight90()
+            
         elif(rotation_amt == -90):
             self.turnLeft90()
+
         elif(rotation_amt == 180 or rotation_amt == -180):
             self.turn180()
 
         else:
+            self.forward()
             pass
 
         x, y = self.position
