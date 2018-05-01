@@ -14,6 +14,7 @@ from Maestro import Controller
 
 controller = Controller()
 connection = Server
+master = Tk()
 
 global currentDirection
 
@@ -374,6 +375,7 @@ class Maze:
         monster = self.maze[x][y].monster
         print(monster.health)
         self.speak("A wimpy, sad monster limps into your path.")
+
         time.sleep(2)
         while self.player.health > 0 and monster.health > 0:
             out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do. Fight, or run?'))
@@ -464,6 +466,7 @@ class Maze:
     def end(self):
         if self.player.has_key:
             self.speak('hooray you finished')
+            sys.exit()
         else:
             self.speak('You need the key, go back and find it you bozo')
 
@@ -480,8 +483,28 @@ class Maze:
             MazeType.NONE: lambda: print,
         }[self.maze[x][y].type]()
 
+        def run_animation():
+            duration = 0
+
+            sm = GifFrame()
+            start_new_thread(draw_animation, (sm, 100))
+            time.sleep(duration)
+            sm.destroy()
+
+        def draw_animation(sm, delay):
+            sm.update()
+            sm.win().after(delay, draw_animation, sm, delay)
 
 
+class GifFrame(object):
+    def __init__(self):
+        self.frameCount = 0
+        self._window = Toplevel()
+        self._window.attributes("-fullscreen", True)
+        self.imageGIF2 = PhotoImage(file="gif.gif", format="gif -index " + str(self.frameCount))
+        self.imageLabel2 = Label(self._window, image=self.imageGIF2)
+        self.imageLabel2.pack()
+        self.imageLabel2.place(x=master.winfo_screenwidth() / 2, y=master.winfo_screenheight() / 2, anchor=CENTER)
 
 def go(controller, server):
 
@@ -493,7 +516,14 @@ def go(controller, server):
     maze.generate_maze2()
     maze.speak(
         "You've stepped into some kind of weird maze. Aw jeez, I don't want to deal with this. There are several paths.")
-
+    controller.setTarget(3,7000)
+    controller.setTarget(0,7000)
+    time.sleep(2)
+    controller.setTarget(3,4000)
+    controller.setTarget(0,4000)
+    time.sleep(2)
+    controller.setTarget(3,6000)
+    controller.setTarget(0,6000)
     for i in range(20):
         print(maze)
         print(', '.join(maze.paths_available()))
