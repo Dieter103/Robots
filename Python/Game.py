@@ -14,7 +14,6 @@ from Maestro import Controller
 
 controller = Controller()
 connection = Server
-master = Tk()
 
 global currentDirection
 
@@ -375,7 +374,6 @@ class Maze:
         monster = self.maze[x][y].monster
         print(monster.health)
         self.speak("A wimpy, sad monster limps into your path.")
-
         time.sleep(2)
         while self.player.health > 0 and monster.health > 0:
             out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do. Fight, or run?'))
@@ -482,8 +480,6 @@ class Maze:
             MazeType.PATH: lambda: print,
             MazeType.NONE: lambda: print,
         }[self.maze[x][y].type]()
-
-
 
 
 
