@@ -11,7 +11,7 @@ class GameAction(Action):
 
     # Override run function
     def run(self, controller, server):
-        go(controller,server)
+        go(server)
 
         pass
 
