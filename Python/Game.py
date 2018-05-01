@@ -379,14 +379,14 @@ class Maze:
         while self.player.health > 0 and monster.health > 0:
             out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do. Fight, or run?'))
             self.speak(out)
-            time.sleep(2)
+            time.sleep(3)
             action = self.listen()
 
             if action == 'fight':
                 dmg_amt = random.randint(0, 10)
                 self.speak("You strike their face with the force of several kielbasa sausages")
                 self.armMovement()
-                self.speak('you did ' + dmg_amt + "damage")
+                self.speak('you did ' + str(dmg_amt) + "damage")
                 monster.deal_damage(dmg_amt)
             elif action == 'run' and self.player.attempt_flee(self):
 
@@ -426,7 +426,7 @@ class Maze:
         x, y = self.position
         monster = self.maze[x][y].monster
         self.speak("Holy crap batman, a giant scary ass monster just stomped into your path. Halp, I'm scared.")
-        time.sleep(3)
+        time.sleep(1)
         while self.player.health > 0 and monster.health > 0:
 
             print('you has', self.player.health, 'health')
@@ -434,6 +434,7 @@ class Maze:
 
             out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do. Fight or run?'))
             self.speak(out)
+            time.sleep(3)
             action = self.listen()
 
 
@@ -441,7 +442,7 @@ class Maze:
                 dmg_amt = random.randint(0, 10)
                 self.speak("You slam your sword into it's body like a toothpick against Zac Efron's rock hard abs")
                 self.armMovement()
-                self.speak("You did " + dmg_amt + " damage")
+                self.speak("You did " + str(dmg_amt) + " damage")
                 monster.deal_damage(dmg_amt)
             elif action == 'run' and self.player.attempt_flee(self):
 
@@ -491,11 +492,14 @@ def go(controller, server):
     currentDirection = Direction.NORTH
     maze = Maze()
     maze.generate_maze2()
+    maze.speak(
+        "You've stepped into some kind of weird maze. Aw jeez, I don't want to deal with this. There are several paths.")
+
     for i in range(10):
         print(maze)
         print(', '.join(maze.paths_available()))
         print(maze.position)
-        server.clients[0].text = "tts " + ', '.join(maze.paths_available())
+        server.clients[0].text = "tts " + 'We can go, '.join(maze.paths_available())
         print('tts ' + ', '.join(maze.paths_available()))
         while server.clients[0].command != "done":
             pass
