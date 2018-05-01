@@ -71,7 +71,7 @@ class WeakMonster(Entity):
     def __init__(self):
         Entity.__init__(self)
         self.damage = 2
-        self.health = 1
+        self.health = 10
 
 
 
@@ -79,8 +79,8 @@ class HardMonster(Entity):
     def __init__(self):
         Entity.__init__(self)
         self.damage = 5
-        self.health = 1
-        self.has_key = True
+        self.health = 20
+        self.has_key = False
 
 class Player(Entity):
     def __init__(self):
@@ -166,8 +166,8 @@ class Maze:
         ]
 
         recharge_station_left = 1
-        weak_enemies_left = 2
-        hard_enemies_left = 5
+        weak_enemies_left = 4
+        hard_enemies_left = 2
 
         start_position = {
             0: (0, 0),
@@ -268,7 +268,7 @@ class Maze:
         controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         print("in 180")
-        time.sleep(2)
+        time.sleep(4)
         controller.setTarget(2,6000)
         time.sleep(1)
         pass
@@ -277,7 +277,7 @@ class Maze:
         controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         print("in right 90")
-        time.sleep(1)
+        time.sleep(2)
         controller.setTarget(2, 6000)
         time.sleep(1)
         pass
@@ -286,7 +286,7 @@ class Maze:
         controller.setAccel(2, 6)
         controller.setTarget(2, 7000)
         print("in left 90")
-        time.sleep(1)
+        time.sleep(2)
         controller.setTarget(2, 6000)
         time.sleep(1)
 
@@ -506,6 +506,13 @@ def go(server):
         print(maze)
         print(', '.join(maze.paths_available()))
         print(maze.position)
+        if i > 1:
+            controller.setTarget(0,4000)
+            time.sleep(0.5)
+            controller.setTarget(0,7000)
+            time.sleep(0.5)
+            controller.setTarget(0,6000)
+
         maze.speak("We can go")
         server.clients[0].text = "tts " + ', or '.join(maze.paths_available())
         print('tts ' + ', '.join(maze.paths_available()))
