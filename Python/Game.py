@@ -305,7 +305,7 @@ class Maze:
         controller.setTarget(8, 9000)
         time.sleep(0.75)
         controller.setTarget(8, 6000)
-        time.sleep(duration)
+        time.sleep(0.5)
         controller.setTarget(6,6000)
 
     def move(self, direction):
@@ -374,12 +374,12 @@ class Maze:
         x, y = self.position
         monster = self.maze[x][y].monster
         print(monster.health)
+        self.speak("A wimpy, sad monster limps into your path.")
+        time.sleep(2)
         while self.player.health > 0 and monster.health > 0:
-            self.speak("A wimpy, sad monster limps into your path.")
-            out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do'))
-
+            out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do. Fight, or run?'))
             self.speak(out)
-
+            time.sleep(2)
             action = self.listen()
 
             if action == 'fight':
@@ -425,13 +425,14 @@ class Maze:
         print()
         x, y = self.position
         monster = self.maze[x][y].monster
+        self.speak("Holy crap batman, a giant scary ass monster just stomped into your path. Halp, I'm scared.")
+        time.sleep(3)
         while self.player.health > 0 and monster.health > 0:
 
             print('you has', self.player.health, 'health')
             print('they has', monster.health, 'health')
-            self.speak("Holy crap batman, a giant scary ass monster just stomped into your path. Halp, I'm scared.")
 
-            out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do'))
+            out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do. Fight or run?'))
             self.speak(out)
             action = self.listen()
 
