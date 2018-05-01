@@ -166,8 +166,8 @@ class Maze:
         ]
 
         recharge_station_left = 1
-        weak_enemies_left = 1
-        hard_enemies_left = 1
+        weak_enemies_left = 2
+        hard_enemies_left = 5
 
         start_position = {
             0: (0, 0),
@@ -232,10 +232,10 @@ class Maze:
             if cell.type == MazeType.RECHARGE_STATION:
                 recharge_station_left -= 1
             elif cell.type == MazeType.WEAK_MONSTER:
-                weak_enemies_left -=1
+                weak_enemies_left -= 1
             elif cell.type == MazeType.HARD_MONSTER:
                 hard_enemies_left -= 1
-                if hard_enemies_left == 1:
+                if hard_enemies_left == 0:
                     cell.monster.has_key = True
             x, y = position
             self.maze[x][y] = cell
