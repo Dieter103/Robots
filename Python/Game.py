@@ -296,6 +296,9 @@ class Maze:
         time.sleep(1)
         controller.setTarget(1,6000)
 
+    def armMovement(self):
+        controller.setTarget(6,2000)
+
     def move(self, direction):
         m = {
             Direction.NORTH: (0, -1),
@@ -323,16 +326,18 @@ class Maze:
         currentDirection = direction
         if(rotation_amt == 90):
             self.turnRight90()
-            
+            self.forward()
+
         elif(rotation_amt == -90):
             self.turnLeft90()
+            self.forward()
 
         elif(rotation_amt == 180 or rotation_amt == -180):
             self.turn180()
-
+            self.forward()
         else:
             self.forward()
-            pass
+            
 
         x, y = self.position
 
