@@ -484,7 +484,7 @@ class Maze:
 
 
 
-def go(controller, server):
+def go(server):
 
     global connection
     connection = server
