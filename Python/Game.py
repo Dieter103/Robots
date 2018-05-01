@@ -499,13 +499,14 @@ def go(controller, server):
         print(maze)
         print(', '.join(maze.paths_available()))
         print(maze.position)
-        server.clients[0].text = "tts " + 'We can go, '.join(maze.paths_available())
+        maze.speak("We can go")
+        server.clients[0].text = "tts " + ', or '.join(maze.paths_available())
         print('tts ' + ', '.join(maze.paths_available()))
         while server.clients[0].command != "done":
             pass
 
         server.clients[0].reset()
-
+        time.sleep(3)
         server.clients[0].text = "sst "
         while (connection.clients[0].command == ''):
             pass
