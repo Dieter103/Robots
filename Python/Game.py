@@ -72,7 +72,7 @@ class WeakMonster(Entity):
         Entity.__init__(self)
         self.damage = 2
         self.health = 1
-        self.has_key = False
+
 
 
 class HardMonster(Entity):
@@ -80,7 +80,7 @@ class HardMonster(Entity):
         Entity.__init__(self)
         self.damage = 5
         self.health = 1
-
+        self.has_key = False
 
 class Player(Entity):
     def __init__(self):
@@ -269,7 +269,7 @@ class Maze:
         controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         print("in 180")
-        time.sleep(4)
+        time.sleep(2)
         controller.setTarget(2,6000)
         time.sleep(1)
         pass
@@ -278,7 +278,7 @@ class Maze:
         controller.setAccel(2, 6)
         controller.setTarget(2, 5000)
         print("in right 90")
-        time.sleep(2)
+        time.sleep(1)
         controller.setTarget(2, 6000)
         time.sleep(1)
         pass
@@ -287,7 +287,7 @@ class Maze:
         controller.setAccel(2, 6)
         controller.setTarget(2, 7000)
         print("in left 90")
-        time.sleep(4)
+        time.sleep(1)
         controller.setTarget(2, 6000)
         time.sleep(1)
 
@@ -426,7 +426,7 @@ class Maze:
         x, y = self.position
         monster = self.maze[x][y].monster
         self.speak("Holy crap batman, a giant scary ass monster just stomped into your path. Halp, I'm scared.")
-        time.sleep(1)
+        time.sleep(5)
         while self.player.health > 0 and monster.health > 0:
 
             print('you has', self.player.health, 'health')
