@@ -72,6 +72,7 @@ class WeakMonster(Entity):
         Entity.__init__(self)
         self.damage = 2
         self.health = 1
+        self.has_key = False
 
 
 class HardMonster(Entity):
@@ -231,7 +232,9 @@ class Maze:
             if cell.type == MazeType.RECHARGE_STATION:
                 recharge_station_left -= 1
             elif cell.type == MazeType.WEAK_MONSTER:
-                weak_enemies_left -= 1
+                hard_enemies_left -= 3
+                if hard_enemies_left == 0:
+                    cell.monster.has_key = True
             elif cell.type == MazeType.HARD_MONSTER:
                 hard_enemies_left -= 1
 
@@ -372,7 +375,8 @@ class Maze:
         monster = self.maze[x][y].monster
         print(monster.health)
         while self.player.health > 0 and monster.health > 0:
-            out = ''.join(('you has', str(self.player.health), 'health', 'they has', str(monster.health), 'health,', 'wut u wanna do'))
+            self.speak("A wimpy, sad monster limps into your path.")
+            out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do'))
 
             self.speak(out)
 
@@ -380,8 +384,9 @@ class Maze:
 
             if action == 'fight':
                 dmg_amt = random.randint(0, 10)
-
-                print('you did', dmg_amt)
+                self.speak("You strike their face with the force of several kielbasa sausages")
+                self.armMovement()
+                self.speak('you did ' + dmg_amt + "damage")
                 monster.deal_damage(dmg_amt)
             elif action == 'run' and self.player.attempt_flee(self):
 
@@ -424,13 +429,18 @@ class Maze:
 
             print('you has', self.player.health, 'health')
             print('they has', monster.health, 'health')
-            out = ''.join(('you has', str(self.player.health), 'health', 'they has', str(monster.health), 'health,', 'wut u wanna do'))
+            self.speak("Holy crap batman, a giant scary ass monster just stomped into your path. Halp, I'm scared.")
+
+            out = ''.join(('you have', str(self.player.health), 'health', 'they have', str(monster.health), 'health,', 'wut u wanna do'))
             self.speak(out)
             action = self.listen()
 
 
             if action == 'fight':
                 dmg_amt = random.randint(0, 10)
+                self.speak("You slam your sword into it's body like a toothpick against Zac Efron's rock hard abs")
+                self.armMovement()
+                self.speak("You did " + dmg_amt + " damage")
                 monster.deal_damage(dmg_amt)
             elif action == 'run' and self.player.attempt_flee(self):
 
@@ -441,7 +451,11 @@ class Maze:
             self.player.deal_damage(dmg_amt)
 
         if self.player.health > 0:
-            self.speak('you won the flight, time to keep kicking ass')
+            if self.player.health > 0:
+                self.speak('you won the flight, time to keep kicking ass')
+                if monster.has_key:
+                    self.player.has_key = True
+                    self.speak('Holy crap, that monster had a key for some reason. I guess we\'ll take it just in case.')
         else:
             self.speak('they won the flight, You let me and everyone you know down. Try again')
             sys.exit()
